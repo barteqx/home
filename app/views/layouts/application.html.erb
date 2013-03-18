@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+	<meta charset="UTF-8"/>
+  <title><%= params[:headertitle] %></title>
+  <%= stylesheet_link_tag    "base", :media => "all" %>
+  <%= stylesheet_link_tag    "skeleton", :media => "all" %>
+  <%= stylesheet_link_tag    "reset", :media => "all" %>
+  <%= stylesheet_link_tag    "layout", :media => "all" %>
+  <%= stylesheet_link_tag    "style", :media => "all" %>
+  <%= stylesheet_link_tag    "font-awesome", :media => "all" %>
+  <%= stylesheet_link_tag    "respmenu", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400&subset=greek-ext,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "menu" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		
+		<div class="twelve columns">
+			<h1 class="title"><i class="<%= params[:icon] %>"></i> <%= params[:title] %></h1>
+		</div>
+		<div class="four columns userbox">
+			<% if current_user %>
+    		Logged in as <%= current_user.email %>.
+    		<%= link_to "Log out", log_out_path %>
+  		<% else %>
+    		<%= link_to "Sign up", sign_up_path %> or
+    		<%= link_to "log in", log_in_path %>
+  		<% end %>
+  		<p id="notice"><%= notice %></p>
+  		<% if @user %>
+	  		<% if @user.errors.any? %>
+			    <div class="error_messages">
+			      <h2>Form is invalid</h2>
+			      <ul>
+			        <% for message in @user.errors.full_messages %>
+			          <li><%= message %></li>
+			        <% end %>
+			      </ul>
+			    </div>
+			 <% end %>
+			<% end %>
+
+		</div>
+		<div class="one columns">
+			<ul class="one columns menu">
+				<%= link_to "/" do %>
+					<li class="menuitem main"><div class="iconx"><i class="icon-home"></i></div><div class="label">Home</div></li>
+				<% end %>
+				<%= link_to "/posts" do %>
+					<li class="menuitem blog"><div class="iconx"><i class="icon-edit"></i></div><div class="label">Blog</div></li>
+				<% end %>
+				<%= link_to "/projects" do %>			
+					<li class="menuitem projects"><div class="iconx"><i class="icon-wrench"></i></div><div class="label">Projects</div></li>
+				<% end %>
+				<%= link_to "/contacts" do %>
+					<li class="menuitem contact"><div class="iconx"><i class="icon-envelope"></i></div><div class="label">Contact</div></li>
+				<% end %>
+
+			</ul>
+		</div>
+		<div class="fifteen columns offset-by-one alfa">
+			<div class="ten columns omega">
+				<div class="ten columns">
+				<%= yield %>
+			</div>
+			</div>
+
+			<div class="five columns omega sidebar alfa omega">
+				<div class="five columns" style="text-align: center">
+					<%= link_to tags_path do %>
+					<div class="sectiontitle" style="background-color: orange; text-decoration: none">Tag cloud</div>
+					<% end %>
+				</div>
+				
+				<div class="five columns sidebar sections omega alfa">
+					<div>
+						<div id="tag_cloud">
+						  <% tag_cloud Post.tag_counts+Project.tag_counts, %w[s m l] do |tag, css_class| %>
+						    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+						  <% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div class="sixteen columns footer"><span>Bartosz Zasieczny - All Rights Reserved. ®</span></div>
+	</div>
+</body>
+</html>

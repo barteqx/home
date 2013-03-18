@@ -1,0 +1,19 @@
+<% @posts.each do |post| %>
+  <div class="ten columns">
+    <%= link_to post do %>
+      <div class="sectiontitle"><%= post.title %></div>
+    <% end %>
+    <div class="ten columns sections omega"><%= post.lead %></div>
+    <p>
+      Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    </p>
+    <% if current_user && current_user.permissions = "a" %>
+      <%= link_to 'Show', post %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, confirm: 'Are you sure?' %>
+    <% end %>
+  </div>
+<% end %>
+<% if current_user && current_user.permissions = "a" %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>

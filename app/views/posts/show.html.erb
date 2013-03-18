@@ -1,0 +1,43 @@
+<div class = "ten columns">
+	<div class="sectiontitle">
+	  <%= @post.title %>
+	</div>
+	<div>By: <%= link_to @user.login, @user %></div>
+
+	<div class=" ten columns leadtext">
+	  <%= @post.lead %>
+	</div>
+
+	<div class="ten columns sections">
+	  <%= raw @post.content %>
+	</div>
+	<p>
+      Tags: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    </p>
+	<% if current_user && current_user.admin? %>
+		<%= link_to 'Edit', edit_post_path(@post) %> |
+	<% end %>
+	<%= link_to 'Back', posts_path %>
+	<br />
+	<br />
+	<p>Comments:</p>
+	<% @post.comments.each do |comment| %>
+		<% author = User.find(comment.user.id) %>
+		<br />
+		<p>Author: <%= link_to author.login, author %></p>
+		<p><%= raw comment.content %><p>
+		</br>
+		<% if @can_edit %>
+			<p><%= link_to "Edit", edit_comment_path(comment.id) %> |
+			<%= link_to "Delete", comment_path(comment.id), method: :delete %></p>
+		<% end %>
+	<% end %>
+	</br>
+	<% if current_user %>
+		<p>Add a comment:</p>
+		<%= form_tag("/posts/#{@post.id}/comments", :method => "post") do %><br />
+		  <%= text_area_tag("content")%>
+		  <p><%= submit_tag "Add comment" %></p>
+		<% end %>
+	<% end %>
+</div>

@@ -1,0 +1,15 @@
+<% if @contacts %>
+  <% @contacts.each do |contact| %>
+    <div class="ten columns">
+      <div class="sectiontitle"><%= contact.name %></div>
+      <div class="ten columns sections omega"><%= raw contact.content %></div>
+      <% if current_user && current_user.permissions = "a" %>
+        <%= link_to 'Edit', edit_contact_path(contact) %>
+        <%= link_to 'Destroy', contact, method: :delete, confirm: 'Are you sure?' %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+<% if current_user && current_user.permissions = "a" %>
+  <%= link_to 'New contact', new_contact_path %>
+<% end %>

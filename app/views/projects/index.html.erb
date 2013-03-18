@@ -1,0 +1,20 @@
+
+   <div class="ten columns sections projectssection projectspage">
+    <% if @projects %>
+      <% @projects.each do |project| %>
+        <%= link_to project do %>
+          <div class="projectitem omega" style="background-color:<%= project.color %>">
+            <div><%= project.name %></div> 
+          </div>         
+        <% end %>
+        <% if current_user && current_user.permissions = "a" %>
+            <div><%= link_to 'Edit', edit_project_path(project) %>
+            <%= link_to 'Destroy', project, method: :delete, confirm: 'Are you sure?'%></div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <%if current_user && current_user.permissions == "a" %> 
+    <%= link_to 'New Project', new_project_path %>
+  <% end %>
+</div>
+

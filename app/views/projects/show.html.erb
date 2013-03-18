@@ -1,0 +1,33 @@
+  <div class="sectiontitle" style="background-color: <%= @project.color %>"><%= @project.name %></div>
+  <div class="leadtext"><%= @project.short_description %></div>
+
+  <div class="sections"><%= raw @project.content %></div>
+
+	<%= link_to 'Back', projects_path %>
+	<% if current_user && current_user.admin? %>
+		| <%= link_to 'Edit', edit_project_path(@project) %>
+	<% end %>
+	<p>Comments:</p>
+		<% @project.comments.each do |comment| %>
+			<% author = User.find(comment.user.id) %>
+			<br />
+			<p>Author: <%= link_to author.login, author %></p>
+			<p><%= raw comment.content %><p>
+			</br>
+			<p>
+      Tags: <%= raw @project.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    	</p>
+			<% if @can_edit %>
+				<p><%= link_to "Edit", edit_comment_path(comment.id) %> |
+				<%= link_to "Delete", comment_path(comment.id), method: :delete %></p>
+			<% end %>
+		<% end %>
+		</br>
+		<% if current_user %>
+			<p>Add a comment:</p>
+			<%= form_tag("/projects/#{@project.id}/comments", :method => "project") do %><br />
+			  <%= text_area_tag("content")%>
+			  <p><%= submit_tag "Add comment" %></p>
+			<% end %>
+		<% end %>
+

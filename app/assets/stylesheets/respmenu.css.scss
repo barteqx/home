@@ -1,0 +1,40 @@
+
+@media only screen and (min-width: 768px) {
+	.one .columns {
+		position: fixed;
+	}	
+
+	.menu{
+		padding-top: 0px;
+	}
+	.menuitem {
+		display: block;
+		width: 40px;
+		text-align: center;
+	}
+
+	.label {
+		transform:rotate(270deg); 
+	  -webkit-transform:rotate(270deg); 
+	  -moz-transform:rotate(270deg); 
+	  -o-transform:rotate(270deg);
+		display: none;
+	}
+
+	.iconx {
+		display: block;
+		text-align: center;
+	}
+
+	.userbox {
+  	height: 108px;
+ 	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	.one .columns{
+		margin-left: 0px;
+		margin-right: 0px;
+		position: fixed;
+	}
+}

@@ -1,0 +1,14 @@
+
+  <% @users.each do |user| %>
+      <%= link_to user.login, @user %>
+      <% if (current_user && current_user.permissions == "a") or (current_user && current_user.id = user.id) %>
+        <%= link_to 'Show', user %>
+        <%= link_to 'Edit', edit_user_path(user) %>
+        <%= link_to 'Destroy', user, :method => :delete, confirm: 'Are you sure?' %>
+      <% end %>
+      <br />
+  <% end %>
+  <br />
+  <% if current_user && current_user.permissions = "a" %>
+    <%= link_to 'New user', new_user_path %>
+  <% end %>

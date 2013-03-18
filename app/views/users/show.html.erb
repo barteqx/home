@@ -1,0 +1,48 @@
+<div class="sectiontitle">
+	Posts
+</div>
+<div>
+	<ul>
+	<% @user.posts.each do |post| %>
+		<%= link_to post do %>
+			<li><%= post.title %></li>
+		<% end %>
+	<% end %>
+	</ul>
+</div>
+</br>
+<div class="sectiontitle">
+	Projects
+</div>
+<div>
+	<ul>
+	<% @user.projects.each do |project| %>
+		<%= link_to project do %>
+			<li><h3><%= project.name %></h3></li>
+		<% end %>
+	<% end %>
+	</ul>
+</div>
+<div class="sectiontitle">
+	Comments
+</div>
+<div>
+	<ul>
+	<% @user.comments.each do |comment| %>
+		<% if comment.project_id %>
+			<% source = Project.find(comment.project_id) %>
+			<% title = source.name %>
+		<% elsif comment.post_id %>
+			<% source = Post.find(comment.post_id) %>
+			<% title = source.title %>
+		<% end %>
+		<%= link_to source do %>
+			<li><h3><%= title %></h3>
+		<% end %>
+		<p><%= raw comment.content %></p></li>
+	</br>
+	<% end %>
+	<%= link_to "All users", users_path %>
+	</ul>
+</div>
+</br>

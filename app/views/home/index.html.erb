@@ -1,0 +1,24 @@
+<div class="five columns omega">
+	<%= link_to @post do %>
+		<div class="sectiontitle"><%= if @post then @post.title end %></div>
+	<% end %>
+	<div class="five columns sections alpha omega">
+	<div>
+		<%= if @post then @post.lead end %>
+	</div>
+</div>
+</div>
+<div class="five columns omega">
+	<%= link_to "/projects" do %>
+		<div class="sectiontitle">Latest projects</div>
+	<% end %>
+		<div class=" projectssection sections">
+			<% @projects.each do |project| %>
+      <%= link_to project do %>
+        <div class="projectitem omega" style="background-color:<%= project.color %>">
+          <div><%= project.name %></div>
+        </div>
+      <% end %>
+    <% end %>
+		</div>
+</div>

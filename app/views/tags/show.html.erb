@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<div class="sectiontitle">
+	Posts
+</div>
+<div>
+	<ul>
+	<% @posts.each do |post| %>
+		<%= link_to post do %>
+			<li><%= post.title %></li>
+		<% end %>
+	<% end %>
+	</ul>
+</div>
+</br>
+<div class="sectiontitle">
+	Projects
+</div>
+<div>
+	<ul>
+	<% @projects.each do |project| %>
+		<%= link_to project do %>
+			<li><h3><%= project.name %></h3></li>
+		<% end %>
+	<% end %>
+	</ul>
+</div>
+</br>
+
+<%= link_to 'Back', tags_path %>

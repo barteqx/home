@@ -1,0 +1,162 @@
+
+body {
+  font: 13px/1.5 'Ubuntu';
+}
+
+pre,
+code {
+  font-family: 'Ubuntu';
+}
+
+.menu {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.menuitem { 
+  margin-bottom: 5px;
+  font-size: 24px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  height: 40px;
+  width: inherit;
+  text-align: center;
+  display: inline;
+}
+
+.label {
+  font-weight: 100;
+  display: none;
+}
+
+.projects {
+  background-color: blue;
+}
+
+.main {
+  background-color: green;
+}
+
+.blog {
+  background-color: red;
+}
+
+.contact {
+  background-color: purple;
+}
+
+.sectiontitle {
+  background-color: black;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 200;
+  border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.sections {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: justify;
+  margin: 0px 5px;
+  font-size: 1.1em;
+}
+
+.sidebar {
+  padding-bottom: 5px;
+  margin-left: 10px;
+  text-align: justify;
+  font-size: 1em;
+  color: #777777;
+}
+
+.iconx {
+  text-align: left;
+  margin-bottom: 120px;
+  display: inline;
+}
+
+.one .columns {
+  position: inherit;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 100;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.footer > h4 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.projectssection {
+  margin-top: 10px;
+  padding: 0px 5px;
+}
+
+.projectspage {
+  margin-top: 0px;
+}
+
+.projectitem {
+  height: 100px;
+  background-color: brown;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 10px;
+  padding-top: 70px;
+
+}
+
+.projectitem_main {
+  margin-top: 5px;
+}
+
+.title {
+  font-size: 72px;
+  font-weight: 100;
+}
+
+.sections > div {
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.sectiontitle, a > .menuitem > .label {
+  text-decoration: none;
+}
+
+.userbox {
+  text-align: center
+}
+
+.userbox > a {
+  color: blue;
+}
+.leadtext {
+  font-size: 18px;
+  font-variant: bold;
+}
+
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
