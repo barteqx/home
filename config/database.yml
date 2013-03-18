@@ -22,7 +22,7 @@ production:
   adapter: mysql2
   database: zasieczny_com
   encoding: utf8
-  username: root
-  password: 4pplej3std0dupy
+  username: ****
+  password: ****
   host: 127.0.0.1
   port: 3306
