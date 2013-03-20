@@ -13,3 +13,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/server/config/initializers/cookie_verification_secret.rb
+/server/config/initializers/session_store.rb
