@@ -6,6 +6,7 @@
 
 <%-# Patrz tutaj! -%>
 <%-# Rly? Nie chcę tutaj się mieszać, ale po co Ci tyle tego? -%>
+    <link href="/assets/clearfix.css" rel="stylesheet">
     <%= stylesheet_link_tag    "base", :media => "all" %>
     <%= stylesheet_link_tag    "skeleton", :media => "all" %>
     <%= stylesheet_link_tag    "reset", :media => "all" %>
@@ -50,7 +51,7 @@
 
 		</div>
 
-		<div class="one columns">
+		<div class="one columns clearfix">
 			<ul class="one columns menu">
 				<li class="menuitem main">
                     <%= link_to "/" do %>
