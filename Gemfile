@@ -31,6 +31,7 @@ end
 
 group :development do
 	gem 'sqlite3'
+	gem 'sextant' 
 end
 
 # To use ActiveModel has_secure_password
